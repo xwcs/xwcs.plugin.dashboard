@@ -48,21 +48,24 @@ namespace xwcs.plugin.dashboard
 
         private void createStartButton()
         {
+            /*
             DevExpress.XtraBars.BarSubItem button1 = new DevExpress.XtraBars.BarSubItem();
-
             XwBarButtonItem barButtonItem1 = new XwBarButtonItem(pluginInfo.name);
             XwBarButtonItem barButtonItem2 = new XwBarButtonItem(pluginInfo.name);
-
             button1.AddItem(barButtonItem1);
             button1.AddItem(barButtonItem2);
-
             barButtonItem1.ItemClick += buttonClick;
+            MenuAddRequest[] menuadd = new MenuAddRequest[1];
+            menuadd[0] = new MenuAddRequest { destination = MenuDestination.MENU_file_open, content=button1 }; 
+            _host.eventProxy.fireEvent(new AddToolBarRequestEvent(this, new AddToolBarRequest(menuadd)));
+            */
+            XwBarButtonItem barButtonItem = new XwBarButtonItem(pluginInfo.name);
+            barButtonItem.ItemClick += buttonClick;
 
             MenuAddRequest[] menuadd = new MenuAddRequest[1];
-
-            menuadd[0] = new MenuAddRequest { destination = MenuDestination.MENU_file_open, content=button1 };
- 
+            menuadd[0] = new MenuAddRequest { destination = MenuDestination.MENU_file_open, content = barButtonItem };
             _host.eventProxy.fireEvent(new AddToolBarRequestEvent(this, new AddToolBarRequest(menuadd)));
+
         }
 
         private void buttonClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

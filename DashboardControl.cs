@@ -6,25 +6,19 @@ using DevExpress.XtraBars.Docking2010.Views.Widget;
 
 namespace xwcs.plugin.dashboard
 {
-    public partial class DashboardControl : xwcs.core.ui.controls.VisualControl
+    public partial class DashboardControl : xwcs.core.ui.controls.VisualControl// : xwcs.core.ui.controls.VisualControlDashboard
     {
         private string _name = "DashboardControl";
         public const string GUID = "2f89825d-b971-4620-b3d1-d7def30bfe0f";
         StackGroup group1, group2;
-        public int count = 1;
         WidgetView view;
-
-        private xwcs.core.ui.controls.DocumentManagerSupport _managerSupport;
-
 
         public DashboardControl()
         {
-            //_controlInfo = new xwcs.core.ui.controls.ControlInfo { Name = _name, Version = "1.0", Type = xwcs.core.ui.controls.controlType.PLGT_document, GUID = new Guid(GUID) };
+            _controlInfo = new xwcs.core.ui.controls.ControlInfo { Name = _name, Version = "1.0", Type = xwcs.core.ui.controls.controlType.PLGT_document, GUID = new Guid(GUID) };
             InitializeComponent();
 
             Text = _name;
-
-
             UpdateDocumentManager();
             
             for (int i = 0; i < 3; i++)
@@ -43,6 +37,7 @@ namespace xwcs.plugin.dashboard
             DocumentManager dM = new DocumentManager();
             view = new WidgetView();
             dM.View = view;
+
             view.AllowDocumentStateChangeAnimation = DevExpress.Utils.DefaultBoolean.True;
             group1 = new StackGroup();
             group2 = new StackGroup();
@@ -54,12 +49,8 @@ namespace xwcs.plugin.dashboard
 
         void AddDocuments()
         {
-            view.AllowDocumentStateChangeAnimation = DevExpress.Utils.DefaultBoolean.True;
-            //Document document = view.AddDocument("Document " + count.ToString(), "ucPreview") as Document;
             Document document = view.AddDocument(new UserControl1()) as Document;
             document.MaximizedControl = new UserControl2();
-            count++;
-        }
-        
+        }        
     }
 }
