@@ -3,7 +3,7 @@
 namespace xwcs.plugin.dashboard
 {
 
-    public class Info : IPluginInfo
+    public class AssemblyInfo : IAssemblyInfo
     {
         string[] arr1 = new string[] { "xwcs.plugin.dashboard.Dashboard" };
 

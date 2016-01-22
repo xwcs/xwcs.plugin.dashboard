@@ -22,24 +22,17 @@ namespace xwcs.plugin.dashboard
     }
     
 
-    public class Dashboard : IVisualPlugin
+    public class Dashboard : VisualPluginBase
     {
-        private IPluginHost _host;
-        private PluginInfo _pluginInfo;
-
         public Dashboard()
         {
-            _pluginInfo = new PluginInfo("Dashboard", "1.0.0", pluginType.PLGT_visual);
-            _pluginInfo.addAbility(pluginAbility.PLGABLT_usercontrol);
-            _pluginInfo.addControl("Dashboard Panel", Guid.Parse(DashboardControl.GUID));
+            createPluginInfo("Dashboard", "1.0.0", pluginType.PLGT_visual);
+            Info.addAbility(pluginAbility.PLGABLT_usercontrol);
+            Info.addControl("Dashboard Panel", Guid.Parse(DashboardControl.GUID));
         }
 
-        public PluginInfo pluginInfo
-        {
-            get { return _pluginInfo; }
-        }
-
-        public DevExpress.XtraEditors.XtraUserControl getControlByGuid(Guid guid)
+        
+        public override DevExpress.XtraEditors.XtraUserControl getControlByGuid(Guid guid)
         {
             if (guid.ToString() == DashboardControl.GUID) return new DashboardControl();
 
@@ -59,34 +52,33 @@ namespace xwcs.plugin.dashboard
             menuadd[0] = new MenuAddRequest { destination = MenuDestination.MENU_file_open, content=button1 }; 
             _host.eventProxy.fireEvent(new AddToolBarRequestEvent(this, new AddToolBarRequest(menuadd)));
             */
-            XwBarButtonItem barButtonItem = new XwBarButtonItem(pluginInfo.name);
+            XwBarButtonItem barButtonItem = new XwBarButtonItem(Info.Name);
             barButtonItem.ItemClick += buttonClick;
 
             MenuAddRequest[] menuadd = new MenuAddRequest[1];
             menuadd[0] = new MenuAddRequest { destination = MenuDestination.MENU_file_open, content = barButtonItem };
-            _host.eventProxy.fireEvent(new AddToolBarRequestEvent(this, new AddToolBarRequest(menuadd)));
+            EventProxy.fireEvent(new AddToolBarRequestEvent(this, new AddToolBarRequest(menuadd)));
 
         }
 
         private void buttonClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _host.eventProxy.fireEvent(new DashboardToolBarEvent(this, "toolbar button clicked"));
+            EventProxy.fireEvent(new DashboardToolBarEvent(this, "toolbar button clicked"));
         }
 
-        public void init(IPluginHost h)
+        public override void afterInit()
         {
-            _host = h;
-            _host.eventProxy.addEventHandler(DashboardEventType.UserManagementToolBarEvent, HandlePlugin1ToolBarEvent);
+            EventProxy.addEventHandler(DashboardEventType.UserManagementToolBarEvent, HandlePlugin1ToolBarEvent);
             createStartButton();
         }
 
         private void HandlePlugin1ToolBarEvent(Event e)
         {
-            Guid guid = pluginInfo.getGuidControlByName("Dashboard Panel");
+            Guid guid = Info.getGuidControlByName("Dashboard Panel");
             OpenPanelRequest panelRequest = new OpenPanelRequest(DevExpress.XtraBars.Docking.DockingStyle.Bottom, new DashboardControl(), guid);
             OpenPanelRequestEvent openPanelEvent = new OpenPanelRequestEvent(this, panelRequest);
 
-            _host.eventProxy.fireEvent(openPanelEvent);
+            EventProxy.fireEvent(openPanelEvent);
         }
     }
 }
