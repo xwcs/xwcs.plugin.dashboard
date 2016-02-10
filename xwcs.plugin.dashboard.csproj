@@ -67,8 +67,11 @@
     <Compile Include="supp\OutputControl.Designer.cs">
       <DependentUpon>OutputControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="XwBarButtonItem.cs">
-      <SubType>Component</SubType>
+    <Compile Include="supp\TestControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="supp\TestControl.Designer.cs">
+      <DependentUpon>TestControl.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +84,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="supp\OutputControl.resx">
       <DependentUpon>OutputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="supp\TestControl.resx">
+      <DependentUpon>TestControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
