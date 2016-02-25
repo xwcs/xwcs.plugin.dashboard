@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using xwcs.core.ui.controls;
 using xwcs.core.evt;
 
+
+
 namespace xwcs.plugin.dashboard.supp
 {
     public partial class OutputControl : VisualControl
@@ -27,8 +29,8 @@ namespace xwcs.plugin.dashboard.supp
 
         private void HandleOutputMessageEvent(Event e)
         {
-
-            richTextBox1.Text += ((OutputMessageEvent)e).Message;
+            string msg = ((OutputMessageEvent)e).Message;
+            richTextBox1.Text += msg;
             richTextBox1.Text += "\n";
         }
     }
