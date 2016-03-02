@@ -23,7 +23,7 @@ namespace xwcs.plugin.dashboard.supp
 
         public OutputControl()
         {
-            InitializeComponent();
+            InitializeComponent();            
             SEventProxy.getInstance().addEventHandler(EventType.OutputMessageEvent, HandleOutputMessageEvent);
         }
 
