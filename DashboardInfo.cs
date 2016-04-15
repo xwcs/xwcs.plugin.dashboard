@@ -5,7 +5,7 @@ namespace xwcs.plugin.dashboard
 
     public class AssemblyInfo : IAssemblyInfo
     {
-        string[] arr1 = new string[] { "xwcs.plugin.dashboard.Dashboard" };
+        string[] arr1 = new string[] { "xwcs.plugin.dashboard.DashboardPlugin" };
 
         public string[] Plugins
         {
