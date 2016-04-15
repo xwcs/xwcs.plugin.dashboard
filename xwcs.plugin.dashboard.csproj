@@ -52,7 +52,7 @@
     <Compile Include="AvailableWidgetsForm.Designer.cs">
       <DependentUpon>AvailableWidgetsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard.cs" />
+    <Compile Include="DashboardPlugin.cs" />
     <Compile Include="DashboardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
