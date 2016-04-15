@@ -21,8 +21,8 @@ namespace xwcs.plugin.dashboard
         StackGroup group1, group2;
         //WidgetView view;
 
-        public DashboardControl()
-        {
+        public DashboardControl(xwcs.core.controls.VisualControlInfo vci) : base(vci)
+		{
             InitializeComponent();
 
             Text = _name;

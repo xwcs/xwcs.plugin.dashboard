@@ -19,8 +19,8 @@ namespace xwcs.plugin.dashboard.supp
         public const xwcs.core.controls.ControlDockStyle DOCK_STYLE = xwcs.core.controls.ControlDockStyle.PLGT_status;
 
 
-        public TestControl()
-        {
+        public TestControl(xwcs.core.controls.VisualControlInfo vci) : base(vci)
+		{
             InitializeComponent();
         }
     }

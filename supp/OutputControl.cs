@@ -21,17 +21,25 @@ namespace xwcs.plugin.dashboard.supp
         public const string VERSION = "1.0";
         public const xwcs.core.controls.ControlDockStyle DOCK_STYLE = xwcs.core.controls.ControlDockStyle.PLGT_status;
 
-        public OutputControl()
-        {
+        public OutputControl(xwcs.core.controls.VisualControlInfo vci) : base(vci)
+		{
             InitializeComponent();            
-            SEventProxy.getInstance().addEventHandler(EventType.OutputMessageEvent, HandleOutputMessageEvent);
-        }
+            SEventProxy.getInstance().addEventHandler<OutputMessageEvent>(EventType.OutputMessageEvent, HandleOutputMessageEvent);
 
-        private void HandleOutputMessageEvent(Event e)
+			Disposed += (s, e) =>
+			{
+				SEventProxy.getInstance().removeEventHandler<OutputMessageEvent>(EventType.OutputMessageEvent, HandleOutputMessageEvent);
+			};
+        }		
+
+        private void HandleOutputMessageEvent(OutputMessageEvent e)
         {
-            string msg = ((OutputMessageEvent)e).Message;
-            richTextBox1.Text += msg;
-            richTextBox1.Text += "\n";
-        }
+            if(!IsDisposed) {
+				richTextBox1.AppendText(e.Message + Environment.NewLine);
+				richTextBox1.SelectionStart = richTextBox1.Text.Length;
+				// scroll it automatically
+				richTextBox1.ScrollToCaret();
+			}			
+		}
     }
 }

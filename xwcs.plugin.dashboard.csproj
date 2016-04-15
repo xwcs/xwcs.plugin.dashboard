@@ -101,8 +101,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(SolutionDir)$(OutDir)Plugins" mkdir "$(SolutionDir)$(OutDir)Plugins"
-copy $(TargetPath) $(SolutionDir)$(OutDir)Plugins</PostBuildEvent>
+    <PostBuildEvent>if not exist "$(SolutionDir)app.main\$(OutDir)Plugins" mkdir "$(SolutionDir)app.main\$(OutDir)Plugins"
+copy $(TargetPath) $(SolutionDir)app.main\$(OutDir)Plugins</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
