@@ -34,7 +34,7 @@ namespace xwcs.plugin.dashboard.supp
 
         private void HandleOutputMessageEvent(OutputMessageEvent e)
         {
-            if(!IsDisposed) {
+            if(!IsDisposed && !richTextBox1.IsDisposed) {
 				richTextBox1.AppendText(e.Message + Environment.NewLine);
 				richTextBox1.SelectionStart = richTextBox1.Text.Length;
 				// scroll it automatically

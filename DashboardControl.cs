@@ -11,20 +11,18 @@ namespace xwcs.plugin.dashboard
 {
     public partial class DashboardControl : xwcs.core.ui.controls.VisualControl// : xwcs.core.ui.controls.VisualControlDashboard
     {
-        /* static control description */
+        #region CONSTANTS
         public const string GUID = "2f89825d-b971-4620-b3d1-d7def30bfe0f";
         public const string VERSION = "1.0";
         public const xwcs.core.controls.ControlDockStyle DOCK_STYLE = xwcs.core.controls.ControlDockStyle.PLGT_document;
+        #endregion
 
-
-        private string _name = "DashboardControl";
-
-        public DashboardControl(xwcs.core.controls.VisualControlInfo vci) : base(vci)
+		public DashboardControl(xwcs.core.controls.VisualControlInfo vci) : base(vci)
 		{
             InitializeComponent();
 
-            Text = _name;
-            UpdateDocumentManager();
+			Text = ControlName;
+			UpdateDocumentManager();
             showWidgets();
         }
 
