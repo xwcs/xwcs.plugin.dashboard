@@ -38,7 +38,12 @@ namespace xwcs.plugin.dashboard.supp
 				richTextBox1.AppendText(e.Message + Environment.NewLine);
 				richTextBox1.SelectionStart = richTextBox1.Text.Length;
 				// scroll it automatically
-				richTextBox1.ScrollToCaret();
+				try
+				{
+					richTextBox1.ScrollToCaret();
+				}
+				catch (Exception) { }
+				
 			}			
 		}
     }

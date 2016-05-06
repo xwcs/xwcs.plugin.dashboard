@@ -23,5 +23,5 @@ namespace xwcs.plugin.dashboard.supp
 		{
             InitializeComponent();
         }
-    }
+	}
 }
