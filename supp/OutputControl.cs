@@ -32,7 +32,7 @@ namespace xwcs.plugin.dashboard.supp
 			};
         }		
 
-        private void HandleOutputMessageEvent(OutputMessageEvent e)
+        private void HandleOutputMessageEvent(object sender, OutputMessageEvent e)
         {
             if(!IsDisposed && !richTextBox1.IsDisposed) {
 				richTextBox1.AppendText(e.Message + Environment.NewLine);
