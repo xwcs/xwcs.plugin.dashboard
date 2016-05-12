@@ -9,7 +9,7 @@ using DevExpress.XtraEditors;
 
 namespace xwcs.plugin.dashboard
 {
-    public partial class DashboardControl : xwcs.core.ui.controls.VisualControl// : xwcs.core.ui.controls.VisualControlDashboard
+    public partial class DashboardControl : VisualControl// : xwcs.core.ui.controls.VisualControlDashboard
     {
         #region CONSTANTS
         public const string GUID = "2f89825d-b971-4620-b3d1-d7def30bfe0f";
@@ -24,9 +24,26 @@ namespace xwcs.plugin.dashboard
 			Text = ControlName;
 			UpdateDocumentManager();
             showWidgets();
-        }
+			openWidgetsToolStripMenuItem.Click += openWidgetsToolStripMenuItem_Click;
+		}
 
-        void UpdateDocumentManager()
+		/// <summary> 
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+
+			openWidgetsToolStripMenuItem.Click -= openWidgetsToolStripMenuItem_Click;
+
+			base.Dispose(disposing);
+		}
+
+		void UpdateDocumentManager()
         {
             widgetView1.AllowDocumentStateChangeAnimation = DevExpress.Utils.DefaultBoolean.True;
 			documentManager1.ContainerControl = this;

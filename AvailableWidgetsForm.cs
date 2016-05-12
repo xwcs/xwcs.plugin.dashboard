@@ -26,9 +26,5 @@ namespace xwcs.plugin.dashboard
             checkedListBoxControl1.DisplayMember = "WidgetName";
             checkedListBoxControl1.CheckMember = "Visible";
         }
-
-        private void AvailableWidgetsForm_Deactivate(object sender, EventArgs e)
-        {
-        }
     }
 }

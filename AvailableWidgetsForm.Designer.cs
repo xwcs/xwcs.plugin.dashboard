@@ -74,7 +74,6 @@
             this.Name = "AvailableWidgetsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AvailableWidgetsForm";
-            this.Deactivate += new System.EventHandler(this.AvailableWidgetsForm_Deactivate);
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl1)).EndInit();
             this.ResumeLayout(false);
 
