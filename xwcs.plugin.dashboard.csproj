@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -110,10 +110,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(SolutionDir)app.main\$(OutDir)Plugins" mkdir "$(SolutionDir)app.main\$(OutDir)Plugins"
-if not exist "$(SolutionDir)app.main\$(OutDir)Plugins\assets" mkdir "$(SolutionDir)app.main\$(OutDir)Plugins\assets"
-copy  $(TargetPath) $(SolutionDir)app.main\$(OutDir)Plugins
-if exist "$(TargetDir)assets" xcopy /s /y $(TargetDir)assets $(SolutionDir)app.main\$(OutDir)Plugins\assets</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
