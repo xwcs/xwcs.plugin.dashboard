@@ -28,7 +28,7 @@ namespace xwcs.plugin.dashboard.supp
 
 			Disposed += (s, e) =>
 			{
-				//SEventProxy.getInstance().removeEventHandler<OutputMessageEvent>(EventType.OutputMessageEvent, HandleOutputMessageEvent);
+				SEventProxy.getInstance().removeEventHandler<OutputMessageEvent>(EventType.OutputMessageEvent, HandleOutputMessageEvent);
 			};
         }		
 
