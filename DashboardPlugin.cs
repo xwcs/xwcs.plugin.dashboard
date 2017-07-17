@@ -14,8 +14,8 @@ namespace xwcs.plugin.dashboard
     {
         public DashboardPlugin()
         {
-            createPluginInfo("xwcs.plugin.dashboard.DashboardPlugin", "1.0.0", pluginType.PLGT_visual);
-            Info.addAbility(pluginAbility.PLGABLT_usercontrol);
+            createPluginInfo(GetType(), "1.0.0", PluginKind.PLGT_visual);
+            Info.addAbility(PluginAbility.PLGABLT_usercontrol);
             Info.addControl(new xwcs.core.controls.VisualControlInfo("Dashboard Panel", typeof(DashboardControl)));
             Info.addControl(new xwcs.core.controls.VisualControlInfo("OutputControl", typeof(supp.OutputControl)));
             Info.addControl(new xwcs.core.controls.VisualControlInfo("TestControl", typeof(supp.TestControl)));
